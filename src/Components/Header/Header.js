@@ -7,10 +7,10 @@ import { IconContext } from "react-icons";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { Provider, auth } from "../../Firebase";
 import { AppContext } from "../../Store/Context";
-import { loginout, user } from "../../Store/Action";
+import { loginout } from "../../Store/Action";
 
 const Header = () => {
-  const { Store, StoreDispatch } = useContext(AppContext);
+  const { StoreDispatch } = useContext(AppContext);
   const [isLogin, setisLogin] = useState(false);
   const [userName, setuserName] = useState("");
   const handleloginOut = () => {

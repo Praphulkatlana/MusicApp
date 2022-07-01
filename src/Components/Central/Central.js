@@ -14,8 +14,7 @@ const Central = () => {
   const inputRef = React.useRef("songs");
 
   const fetchingVideos = async () => {
-    let KEY; //= "AIzaSyDH6cnT-6UgKTABtBadvT7bwNyhzodGkHQ";
-    KEY = process.env.REACT_APP_YOUTUBE_KEY;
+    let KEY = process.env.REACT_APP_YOUTUBE_KEY;
 
     let FetchVideo = axios.create({
       baseURL: "https://youtube.googleapis.com/youtube/v3/",
@@ -24,7 +23,7 @@ const Central = () => {
     let respones = await FetchVideo.get("/search", {
       params: {
         part: "snippet",
-        maxResults: 15,
+        maxResults: 20,
         q: searchkeyword,
         key: KEY,
       },
@@ -39,16 +38,17 @@ const Central = () => {
 
   const songSelect = (id, res, index) => {
     let name = res.snippet.title.slice(0, 50);
-    if (Store.currentSongsId != id) {
+    if (Store.currentSongsId !== id) {
       StoreDispatch({ type: ChangeSong, payload: { id, name, index } });
     }
   };
 
-  const onInputChange = (e) => {
-    if (inputRef.current.value == "") {
+  const onInputChange = () => {
+    let InpkeyWord = inputRef.current.value.trim("");
+    if (InpkeyWord === "") {
       return null;
     }
-    setsearchkeyword(inputRef.current.value);
+    setsearchkeyword(InpkeyWord);
   };
 
   return (

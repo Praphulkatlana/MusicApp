@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext, createRef } from "react";
 import ReactPlayer from "react-player/youtube";
-import axios from "axios";
 import { GrCaretPrevious } from "react-icons/gr";
 import { GrCaretNext } from "react-icons/gr";
 import { AiOutlinePlayCircle } from "react-icons/ai";
@@ -27,7 +26,7 @@ const Music = ({ rotationtoggle }) => {
   const onPlayPause = () => {
     setisPlaying(!isPlaying);
     rotationtoggle(!isPlaying);
-    if (played == 0) {
+    if (played === 0) {
       setduration(duration);
       handleDuration();
     }
@@ -55,10 +54,6 @@ const Music = ({ rotationtoggle }) => {
     setduration(val);
   };
 
-  const handleSeekMouseDown = (e) => {
-    // console.log(parseFloat(e.target.value));
-  };
-
   const handleSeekChange = (e) => {
     let playedTime = e.target.value;
     setplayed(parseFloat(playedTime));
@@ -69,8 +64,6 @@ const Music = ({ rotationtoggle }) => {
     setvolume(parseFloat(e.target.value));
   };
   const handleProgressTime = () => {
-    //set played as current time not seekbar value
-
     let playedTime = player.current.getCurrentTime();
     setplayed(parseFloat(playedTime));
   };
@@ -81,7 +74,7 @@ const Music = ({ rotationtoggle }) => {
   const handleEndMedia = () => {
     setisPlaying(false);
     rotationtoggle(false);
-    if (Store.currentindex == Store.songsList.length - 1) {
+    if (Store.currentindex === Store.songsList.length - 1) {
       return;
     } else {
       let id = Store.songsList[Store.currentindex + 1].id.videoId;
@@ -96,7 +89,7 @@ const Music = ({ rotationtoggle }) => {
   };
 
   const prvSong = () => {
-    if (Store.currentindex == 0) {
+    if (Store.currentindex === 0) {
       return;
     } else {
       console.log(Store);
@@ -109,7 +102,7 @@ const Music = ({ rotationtoggle }) => {
     }
   };
   const nxtSong = () => {
-    if (Store.currentindex == Store.songsList.length - 1) {
+    if (Store.currentindex === Store.songsList.length - 1) {
       return;
     } else {
       let id = Store.songsList[Store.currentindex + 1].id.videoId;
@@ -165,7 +158,7 @@ const Music = ({ rotationtoggle }) => {
           max={100}
           step="any"
           value={played}
-          onMouseDown={(e) => handleSeekMouseDown(e)}
+          onMouseDown={(e) => {}}
           onChange={(e) => handleSeekChange(e)}
         />
       </div>

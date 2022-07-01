@@ -6,7 +6,7 @@ import { GiMusicSpell } from "react-icons/gi";
 import { IconContext } from "react-icons";
 
 const Footer = () => {
-  const { Store, StoreDispatch } = useContext(AppContext);
+  const { Store } = useContext(AppContext);
   const [rotate, setrotate] = useState(false);
   const rotationtoggle = (flag) => {
     setrotate(flag);
