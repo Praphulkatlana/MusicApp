@@ -1,0 +1,96 @@
+#centraldiv{
+    background-color: #161515;
+    height: 70vh;
+    margin-left: 20vw;
+    overflow: scroll;
+    
+}
+.songsListSection{
+    margin-top: 4rem;
+}
+.songsItem{
+    background-color: #272626;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.thumbnil{
+max-width: 7rem;
+max-height: 8rem;
+cursor: pointer;
+transition: all 1s ease;
+}
+
+.thumbnil img{
+    width:80%;
+    height:80%;
+}
+
+.thumbnil img:hover{
+    width:100%;
+    height:100%;
+    transition: all .6s ease-in-out;
+}
+.songDetails{
+    margin-left: 1rem;
+    cursor: pointer;
+    font-family:Helvetica,Arial,sans-serif;
+    color: whitesmoke;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.artistName{
+    margin-right: 5rem;
+}
+
+.searchSection{
+    background-color: #161515;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    position: fixed;
+    margin-bottom: 1rem;
+}
+
+.inputFlied{
+border-radius: 50px 50px 50px 50px;
+width: 55%;
+height: 2rem;
+margin-right: 5px;
+padding: 5px 20px;
+border-color: transparent;
+}
+.inputFlied:focus { 
+    outline: none !important;
+    border-color: black;
+    box-shadow: 0 0 10px silver;
+ }
+
+ .searchBtn{
+    margin-left: 1rem;
+    cursor: pointer;
+ }
+
+
+@media only screen and (max-width: 960px) {
+    .thumbnil{
+        max-width: 3rem;
+        max-height: 3rem;
+        }
+        .songDetails{
+            font-size: 0.9rem;
+        }
+        .artistName{
+            display: none;
+        }
+}

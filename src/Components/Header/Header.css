@@ -1,0 +1,99 @@
+#Header_main{
+    background-image: linear-gradient(#aba95f,#181918);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+}
+.logo{
+    margin-left: 6vw;
+    margin-top: 1rem;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+}
+.logo img{
+max-width: 7rem;   
+max-height: 6rem;   
+}
+.userInfo{
+    margin-right: 5vw;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+    cursor: pointer;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+}
+.userInfo h3{
+    font-weight: 400;
+    font-family: inherit;
+}
+.hrLine{
+    border: 0.1px solid #47401e;
+}
+
+#sidebar{
+    position: absolute;
+    background-color: #000000;
+    overflow-wrap: break-word;
+    width: 20%;
+    color: #a8a8a8;
+   
+}
+
+.tabs{
+     padding-left: 3rem;
+     list-style: none;
+     height: 70vh;
+     color: #ffffff;
+    
+}
+.tabs {
+    color: #b3b3b3;
+    font-size: large;
+}
+.mobileview a{
+    transition: font-size 0.2s linear;
+    cursor: pointer;
+}
+.mobileview a:hover{
+    font-size:1.7rem;
+    color:  #b2b194;
+}
+.activetab{
+    color: #ffffff;
+    
+}
+#sidebar ul li{
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-family: Helvetica,Arial,sans-serif !important;
+    line-height: 3rem;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 500;
+   }
+.HrLine{
+    width: 90%;
+    margin-right: 10%;
+    border: none;
+    height: 1px;
+    color: #333; 
+    background-color: #333; 
+}
+
+@media only screen and (max-width: 960px) {
+    .mobileview a {
+      display: none;
+    }
+    .tabs{
+        padding-left: 0rem;
+        text-align: center;
+    }
+    
+  }
+
