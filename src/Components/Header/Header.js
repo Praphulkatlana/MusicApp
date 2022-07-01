@@ -63,6 +63,7 @@ const Header = () => {
             <FcMusic />
           </IconContext.Provider>
         </div>
+        <h1 className="HeaderTitle">Music World</h1>
         <IconContext.Provider value={{ size: "2em" }}>
           <div className="userInfo">
             {isLogin ? (

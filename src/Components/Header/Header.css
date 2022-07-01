@@ -85,6 +85,12 @@ max-height: 6rem;
     color: #333; 
     background-color: #333; 
 }
+.HeaderTitle{
+    font-family: cursive;
+    font-weight: 400;
+    color: darkkhaki;
+}
+
 
 @media only screen and (max-width: 960px) {
     .mobileview a {

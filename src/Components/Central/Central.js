@@ -10,7 +10,7 @@ const Central = () => {
   const { Store, StoreDispatch } = useContext(AppContext);
 
   const [songsList, setsong] = useState([]);
-  const [searchkeyword, setsearchkeyword] = useState("newmoviesongs");
+  const [searchkeyword, setsearchkeyword] = useState("newsongs");
   const inputRef = React.useRef("songs");
 
   const fetchingVideos = async () => {
