@@ -155,7 +155,7 @@ const Music = ({ rotationtoggle }) => {
           className="progessBar"
           type="range"
           min={0}
-          max={100}
+          max={duration}
           step="any"
           value={played}
           onMouseDown={(e) => {}}
