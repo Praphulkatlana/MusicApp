@@ -50,11 +50,21 @@ const Central = () => {
     }
     setsearchkeyword(InpkeyWord);
   };
+  const handleEnterKey = (e) => {
+    if (e.key == "Enter") {
+      onInputChange();
+    }
+  };
 
   return (
     <div id="centraldiv">
       <div className="searchSection">
-        <input ref={inputRef} className="inputFlied" placeholder="Search" />
+        <input
+          ref={inputRef}
+          className="inputFlied"
+          placeholder="Search"
+          onKeyDown={(e) => handleEnterKey(e)}
+        />
         <IconContext.Provider value={{ color: "white", size: "2em" }}>
           <AiOutlineSearch onClick={onInputChange} className="searchBtn" />
         </IconContext.Provider>
