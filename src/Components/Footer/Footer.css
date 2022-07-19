@@ -58,12 +58,14 @@ progress::-webkit-progress-value {
     width: 100%;
   }
 
-  .volumeBar{
+  .volumeBar input{
     transform: rotate(270deg);
     position: absolute;
-    margin-left: -70vw;
+    margin-left: -11vw;
     margin-top: 2rem;
+    width: 7rem;
   }
+  
   .playerButton{
     width: 100%;
     display: flex;
@@ -77,6 +79,7 @@ progress::-webkit-progress-value {
   }
   .player-bottom>input{
     width: 80%;
+    margin-left: 2rem;
   }
 
 .musicIcon {

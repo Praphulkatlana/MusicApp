@@ -29,6 +29,7 @@ const Central = () => {
       },
     });
     respones = respones.data.items;
+    console.log(respones);
     setsong(respones);
     StoreDispatch({ type: songArray, payload: respones });
   };
@@ -36,10 +37,11 @@ const Central = () => {
     fetchingVideos();
   }, [searchkeyword]);
 
-  const songSelect = (id, res, index) => {
+  const songSelect = (id, res, index, url) => {
+    console.log(url);
     let name = res.snippet.title.slice(0, 50);
     if (Store.currentSongsId !== id) {
-      StoreDispatch({ type: ChangeSong, payload: { id, name, index } });
+      StoreDispatch({ type: ChangeSong, payload: { id, name, index, url } });
     }
   };
 
@@ -51,7 +53,7 @@ const Central = () => {
     setsearchkeyword(InpkeyWord);
   };
   const handleEnterKey = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       onInputChange();
     }
   };
@@ -78,7 +80,14 @@ const Central = () => {
               </div>
               <div
                 className="songDetails"
-                onClick={() => songSelect(result.id.videoId, result, index)}
+                onClick={() =>
+                  songSelect(
+                    result.id.videoId,
+                    result,
+                    index,
+                    result.snippet.thumbnails.medium.url
+                  )
+                }
               >
                 <p className="songName">
                   {result.snippet.title.slice(0, 50)}

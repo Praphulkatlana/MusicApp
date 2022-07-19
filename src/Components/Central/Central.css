@@ -84,8 +84,8 @@ border-color: transparent;
 
 @media only screen and (max-width: 960px) {
     .thumbnil{
-        max-width: 3rem;
-        max-height: 3rem;
+        max-width: 4rem;
+        max-height: 4rem;
         }
         .songDetails{
             font-size: 0.9rem;

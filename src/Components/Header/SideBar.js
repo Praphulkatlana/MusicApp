@@ -3,21 +3,28 @@ import "./Header.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
     <div id="sidebar">
       <ul className="tabs">
-        <li className="mobileview">
-          <AiOutlineHome />
-          <a className="activetab">Home</a>
+        <li>
+          <Link className="Link" to="/">
+            <AiOutlineHome />
+            <span className="mobileview">Home</span>
+          </Link>
         </li>
-        <li className="mobileview">
-          <AiOutlineSearch />
-          <a className="mobileview">Search</a>
+        <li>
+          <Link className="Link" to="/search">
+            <AiOutlineSearch />
+            <span className="mobileview">Search</span>
+          </Link>
         </li>
-        <li className="mobileview">
-          <FcLike />
-          <a className="mobileview">Favourites</a>
+        <li>
+          <Link className="Link" to="/favourite">
+            <FcLike />
+            <span className="mobileview">Favourite</span>
+          </Link>
         </li>
         <hr className="HrLine" />
       </ul>

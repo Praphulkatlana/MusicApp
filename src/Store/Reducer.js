@@ -1,4 +1,6 @@
 const reducer = (state, action) => {
+  // console.log(action.type);
+  // console.log(action.payload);
   switch (action.type) {
     case "SongChange":
       return {
@@ -6,6 +8,7 @@ const reducer = (state, action) => {
         currentSongId: action.payload.id,
         currentSongName: action.payload.name,
         currentindex: action.payload.index,
+        currentThumbNilUrl: action.payload.url,
       };
     case "songArray":
       return {
@@ -15,8 +18,9 @@ const reducer = (state, action) => {
     case "loginout":
       return {
         ...state,
-        islogin: action.payload.islogin,
-        userName: action.payload.user,
+        isLogin: action.payload.isLogin,
+        userName: action.payload.userName,
+        userId: action.payload.userId,
       };
     default:
       return { state };

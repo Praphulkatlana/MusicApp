@@ -1,0 +1,81 @@
+#homediv{
+    background-color: #161515;
+    height: 70vh;
+    margin-left: 20vw;
+    overflow: scroll;
+   
+    
+}
+.home_songsListSection{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.home_songsItem{
+    flex-grow: 1;
+    width: 23%;
+    background-color: #272626;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.home_thumbnil{
+cursor: pointer;
+transition: all 1s ease;
+}
+
+.home_thumbnil img{
+    width:100%;
+    height:100%;
+    transition: all .6s ease-in-out;
+}
+
+.home_thumbnil img:hover{
+    transform:scale(1.10);
+   
+}
+.home_songDetails{
+    margin-left: 1rem;
+    cursor: pointer;
+    font-family:Helvetica,Arial,sans-serif;
+    color: whitesmoke;
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.home_songName{
+    text-align: center;
+}
+.home_artistName{
+    margin-right: 5rem;
+}
+.home_songName_mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 960px) {
+    
+        .home_songDetails{
+            font-size: 0.9rem;
+        }
+        .home_artistName{
+            display: none;
+        }
+        .home_songName_mobile{
+            display: block;
+        }
+        .home_songName{
+            display: none;
+        }
+        .home_songsItem{
+            width: 40%;}
+}

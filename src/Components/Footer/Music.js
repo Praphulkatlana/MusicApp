@@ -4,12 +4,13 @@ import { GrCaretPrevious } from "react-icons/gr";
 import { GrCaretNext } from "react-icons/gr";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { AiOutlinePauseCircle } from "react-icons/ai";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { MdOutlineFavorite } from "react-icons/md";
-
+import { MdPlaylistAdd } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { AppContext } from "../../Store/Context";
 import { ChangeSong } from "../../Store/Action";
+
+import { db } from "../../Firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 import "./Footer.css";
 
@@ -17,11 +18,10 @@ const Music = ({ rotationtoggle }) => {
   const { Store, StoreDispatch } = useContext(AppContext);
   const player = createRef();
   const [url, seturl] = useState("");
-  const [isPlaying, setisPlaying] = useState(true);
+  const [isPlaying, setisPlaying] = useState(false);
   const [played, setplayed] = useState(0);
   const [duration, setduration] = useState(0);
   const [volume, setvolume] = useState(0.5);
-  const [Fav, setFav] = useState(false);
 
   const onPlayPause = () => {
     setisPlaying(!isPlaying);
@@ -92,7 +92,6 @@ const Music = ({ rotationtoggle }) => {
     if (Store.currentindex === 0) {
       return;
     } else {
-      console.log(Store);
       let id = Store.songsList[Store.currentindex - 1].id.videoId;
       let name = Store.songsList[Store.currentindex - 1].snippet.title;
       StoreDispatch({
@@ -114,7 +113,27 @@ const Music = ({ rotationtoggle }) => {
     }
   };
   const AddToFav = () => {
-    setFav(!Fav);
+    let userId = Store.userId;
+    let id = Store.currentSongId;
+    let title = Store.currentSongName;
+    let thumbnailsUrl = Store.currentThumbNilUrl;
+    if (id === "" || title === "" || thumbnailsUrl === "") {
+      // toastify("first play song")
+      return;
+    }
+    AddSongToDB(userId, id, title, thumbnailsUrl);
+  };
+  const AddSongToDB = async (userId, id, title, thumbnailsUrl) => {
+    try {
+      const docRef = await addDoc(collection(db, "newww"), {
+        id: id,
+        name: title,
+        url: thumbnailsUrl,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
   return (
     <div>
@@ -131,14 +150,7 @@ const Music = ({ rotationtoggle }) => {
             />
           </div>
           <IconContext.Provider value={{ color: "white", size: "2em" }}>
-            {Fav ? (
-              <MdOutlineFavorite onClick={AddToFav} className="AddToFavBtn" />
-            ) : (
-              <MdOutlineFavoriteBorder
-                onClick={AddToFav}
-                className="AddToFavBtn"
-              />
-            )}
+            <MdPlaylistAdd onClick={AddToFav} className="AddToFavBtn" />
             <GrCaretPrevious onClick={prvSong} id="whiteColor" />
             {url && (
               <div onClick={onPlayPause}>

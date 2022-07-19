@@ -55,11 +55,19 @@ max-height: 6rem;
     color: #b3b3b3;
     font-size: large;
 }
-.mobileview a{
+.mobileview {
     transition: font-size 0.2s linear;
     cursor: pointer;
+    color: antiquewhite;
+    text-decoration: none;
 }
-.mobileview a:hover{
+.Link{
+    transition: font-size 0.2s linear;
+    cursor: pointer;
+    color: antiquewhite;
+    text-decoration: none;
+}
+.mobileview:hover{
     font-size:1.7rem;
     color:  #b2b194;
 }
@@ -93,7 +101,7 @@ max-height: 6rem;
 
 
 @media only screen and (max-width: 960px) {
-    .mobileview a {
+    .mobileview {
       display: none;
     }
     .tabs{

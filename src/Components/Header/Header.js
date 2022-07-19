@@ -13,22 +13,25 @@ const Header = () => {
   const { StoreDispatch } = useContext(AppContext);
   const [isLogin, setisLogin] = useState(false);
   const [userName, setuserName] = useState("");
-  const handleloginOut = () => {
+  const handleloginOut = async () => {
     if (isLogin) {
       signOut(auth)
         .then(() => {
           setisLogin(false);
           StoreDispatch({
             type: loginout,
-            payload: { islogin: false },
+            payload: { isLogin: false },
           });
         })
         .catch((e) => {
+          // toastify( "error aa rahi hai")
           alert("Something went wrong while logout please try again");
         });
     } else {
-      signInWithPopup(auth, Provider)
+      await signInWithPopup(auth, Provider)
         .then((response) => {
+          let user = response.user;
+          let userId = user.email;
           let name = response.user.auth;
           name = name.currentUser;
 
@@ -44,7 +47,7 @@ const Header = () => {
           setuserName(name);
           StoreDispatch({
             type: loginout,
-            payload: { islogin: true, user: name },
+            payload: { isLogin: true, userName: name, userId: userId },
           });
           setisLogin(true);
         })
