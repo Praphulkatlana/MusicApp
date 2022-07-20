@@ -23,13 +23,12 @@ const Central = () => {
     let respones = await FetchVideo.get("/search", {
       params: {
         part: "snippet",
-        maxResults: 20,
+        maxResults: 12,
         q: searchkeyword,
         key: KEY,
       },
     });
     respones = respones.data.items;
-    console.log(respones);
     setsong(respones);
     StoreDispatch({ type: songArray, payload: respones });
   };
@@ -38,7 +37,6 @@ const Central = () => {
   }, [searchkeyword]);
 
   const songSelect = (id, res, index, url) => {
-    console.log(url);
     let name = res.snippet.title.slice(0, 50);
     if (Store.currentSongsId !== id) {
       StoreDispatch({ type: ChangeSong, payload: { id, name, index, url } });

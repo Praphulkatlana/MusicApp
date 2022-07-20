@@ -113,11 +113,19 @@ const Music = ({ rotationtoggle }) => {
     }
   };
   const AddToFav = () => {
+    if (!Store.isLogin) {
+      return;
+    }
     let userId = Store.userId;
     let id = Store.currentSongId;
     let title = Store.currentSongName;
     let thumbnailsUrl = Store.currentThumbNilUrl;
-    if (id === "" || title === "" || thumbnailsUrl === "") {
+    if (
+      id === "" ||
+      title === "" ||
+      thumbnailsUrl === "" ||
+      url.trim() === ""
+    ) {
       // toastify("first play song")
       return;
     }
@@ -125,12 +133,12 @@ const Music = ({ rotationtoggle }) => {
   };
   const AddSongToDB = async (userId, id, title, thumbnailsUrl) => {
     try {
-      const docRef = await addDoc(collection(db, "newww"), {
+      const docRef = await addDoc(collection(db, userId), {
         id: id,
         name: title,
         url: thumbnailsUrl,
       });
-      console.log("Document written with ID: ", docRef.id);
+      alert("Song added to fav list");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -183,7 +191,7 @@ const Music = ({ rotationtoggle }) => {
         playing={isPlaying}
         onBufferEnd={bufferEnd}
         onDuration={handleDuration}
-        onSeek={(e) => console.log("onSeek", e)}
+        onSeek={{}}
         onEnded={handleEndMedia}
       />
     </div>

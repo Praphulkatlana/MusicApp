@@ -52,7 +52,6 @@ const Header = () => {
           setisLogin(true);
         })
         .catch((e) => {
-          console.log(e);
           alert("Something went wrong while login please try again");
         });
     }

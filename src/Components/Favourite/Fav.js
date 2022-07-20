@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import "../Central/Central.css";
 import { AppContext } from "../../Store/Context";
 import { ChangeSong, songArray } from "../../Store/Action";
@@ -9,7 +8,6 @@ import { collection, getDocs } from "firebase/firestore";
 
 const Fav = (props) => {
   const { Store, StoreDispatch } = useContext(AppContext);
-  let navigate = useNavigate();
   if (Store.isLogin === false) {
     // navigate.push("/search");
     alert("Please Login");
@@ -19,8 +17,6 @@ const Fav = (props) => {
   let data = [];
 
   const fetchingVideos = async () => {
-    console.log("fetchcall");
-
     let userId = "test";
     userId = Store.userId;
     userId = "prafulkatlana@gmail.com";
@@ -39,9 +35,6 @@ const Fav = (props) => {
         removeDuplicateItem.add(data[index].id);
       }
     }
-    console.log(data);
-    // data = [...new Map(data.map((item, key) => [item[key], item])).values()];
-
     setsong(data);
   };
   useEffect(() => {
@@ -85,7 +78,6 @@ const Fav = (props) => {
           );
         })}
       </div>
-      <button onClick={() => console.log(Store)}>state</button>
     </div>
   );
 };
