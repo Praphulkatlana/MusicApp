@@ -18,6 +18,7 @@ const reducer = (state, action) => {
     case "loginout":
       return {
         ...state,
+        songsList: [],
         isLogin: action.payload.isLogin,
         userName: action.payload.userName,
         userId: action.payload.userId,
