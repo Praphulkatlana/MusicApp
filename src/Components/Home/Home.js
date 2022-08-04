@@ -56,7 +56,10 @@ const Home = ({ login_tag }) => {
     if (respones?.data?.items) {
       respones = respones.data.items;
       setsong(respones);
-      StoreDispatch({ type: songArray, payload: respones });
+      StoreDispatch({
+        type: songArray,
+        payload: { songsList: respones, FavListPlaying: false },
+      });
     } else {
     }
   };
@@ -64,10 +67,10 @@ const Home = ({ login_tag }) => {
     fetchingVideos();
   }, []);
 
-  const songSelect = (id, res, index) => {
+  const songSelect = (id, res, index, url) => {
     let name = res.snippet.title.slice(0, 50);
     if (Store.currentSongsId !== id) {
-      StoreDispatch({ type: ChangeSong, payload: { id, name, index } });
+      StoreDispatch({ type: ChangeSong, payload: { id, name, index, url } });
     }
   };
 
@@ -86,7 +89,14 @@ const Home = ({ login_tag }) => {
             <div
               className="home_songsItem"
               key={index}
-              onClick={() => songSelect(result.id.videoId, result, index)}
+              onClick={() =>
+                songSelect(
+                  result.id.videoId,
+                  result,
+                  index,
+                  result.snippet.thumbnails.medium.url
+                )
+              }
             >
               <div className="home_thumbnil">
                 <img src={result.snippet.thumbnails.medium.url} alt="thumb" />

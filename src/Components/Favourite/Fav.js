@@ -43,7 +43,10 @@ const Fav = (props) => {
   const songSelect = (id, title, index, url) => {
     let name = title.slice(0, 50);
     if (Store.currentSongsId !== id) {
-      StoreDispatch({ type: songArray, payload: songsList });
+      StoreDispatch({
+        type: songArray,
+        payload: { songsList, FavListPlaying: true },
+      });
       StoreDispatch({ type: ChangeSong, payload: { id, name, index, url } });
     }
   };

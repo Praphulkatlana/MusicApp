@@ -20,7 +20,7 @@ const Central = () => {
       baseURL: "https://youtube.googleapis.com/youtube/v3/",
     });
 
-    let respones = await FetchVideo.get("/search", {
+    let songsList = await FetchVideo.get("/search", {
       params: {
         part: "snippet",
         maxResults: 12,
@@ -28,9 +28,12 @@ const Central = () => {
         key: KEY,
       },
     });
-    respones = respones.data.items;
-    setsong(respones);
-    StoreDispatch({ type: songArray, payload: respones });
+    songsList = songsList.data.items;
+    setsong(songsList);
+    StoreDispatch({
+      type: songArray,
+      payload: { songsList, FavListPlaying: false },
+    });
   };
   useEffect(() => {
     fetchingVideos();

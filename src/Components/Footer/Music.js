@@ -92,8 +92,14 @@ const Music = ({ rotationtoggle }) => {
     if (Store.currentindex === 0) {
       return;
     } else {
-      let id = Store.songsList[Store.currentindex - 1].id.videoId;
-      let name = Store.songsList[Store.currentindex - 1].snippet.title;
+      let id, name;
+      if (Store.FavListPlaying) {
+        id = Store.songsList[Store.currentindex - 1].id;
+        name = Store.songsList[Store.currentindex - 1].name;
+      } else {
+        id = Store.songsList[Store.currentindex - 1].id.videoId;
+        name = Store.songsList[Store.currentindex - 1].snippet.title;
+      }
       StoreDispatch({
         type: ChangeSong,
         payload: { id, name, index: Store.currentindex - 1 },
@@ -104,8 +110,14 @@ const Music = ({ rotationtoggle }) => {
     if (Store.currentindex === Store.songsList.length - 1) {
       return;
     } else {
-      let id = Store.songsList[Store.currentindex + 1].id.videoId;
-      let name = Store.songsList[Store.currentindex + 1].snippet.title;
+      let id, name;
+      if (Store.FavListPlaying) {
+        id = Store.songsList[Store.currentindex + 1].id;
+        name = Store.songsList[Store.currentindex + 1].name;
+      } else {
+        id = Store.songsList[Store.currentindex + 1].id.videoId;
+        name = Store.songsList[Store.currentindex + 1].snippet.title;
+      }
       StoreDispatch({
         type: ChangeSong,
         payload: { id, name, index: Store.currentindex + 1 },
@@ -132,6 +144,10 @@ const Music = ({ rotationtoggle }) => {
     AddSongToDB(userId, id, title, thumbnailsUrl);
   };
   const AddSongToDB = async (userId, id, title, thumbnailsUrl) => {
+    if (thumbnailsUrl == undefined) {
+      thumbnailsUrl =
+        "https://e7.pngegg.com/pngimages/991/237/png-clipart-musical-note-music-notes-miscellaneous-monochrome-thumbnail.png";
+    }
     try {
       const docRef = await addDoc(collection(db, userId), {
         id: id,

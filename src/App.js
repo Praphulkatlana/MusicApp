@@ -19,6 +19,7 @@ const initialState = {
   userName: "",
   userId: "",
   songsList: [],
+  FavListPlaying: false,
 };
 
 const App = (props) => {

@@ -13,7 +13,8 @@ const reducer = (state, action) => {
     case "songArray":
       return {
         ...state,
-        songsList: [...action.payload],
+        songsList: [...action.payload.songsList],
+        FavListPlaying: action.payload.FavListPlaying,
       };
     case "loginout":
       return {
