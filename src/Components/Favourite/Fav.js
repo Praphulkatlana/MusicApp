@@ -19,7 +19,6 @@ const Fav = (props) => {
   const fetchingVideos = async () => {
     let userId = "test";
     userId = Store.userId;
-    userId = "prafulkatlana@gmail.com";
 
     data = [];
     const querySnapshot = await getDocs(collection(db, userId));
