@@ -11,7 +11,7 @@ const Home = ({ login_tag }) => {
   const { Store, StoreDispatch } = useContext(AppContext);
 
   const [songsList, setsong] = useState([]);
-  const [ErrorMsg, setErrorMsg] = useState("Laoding....");
+  const [ErrorMsg, setErrorMsg] = useState("Loading....");
 
   const fetchingVideos = async () => {
     let KEY = process.env.REACT_APP_YOUTUBE_KEY;
