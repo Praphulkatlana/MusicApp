@@ -4,10 +4,7 @@ import axios from "axios";
 import { AppContext } from "../../Store/Context";
 import { ChangeSong, songArray } from "../../Store/Action";
 
-const Home = ({ login_tag }) => {
-  if (!login_tag) {
-    alert("please login");
-  }
+const Home = () => {
   const { Store, StoreDispatch } = useContext(AppContext);
 
   const [songsList, setsong] = useState([]);

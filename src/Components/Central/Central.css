@@ -83,6 +83,15 @@ border-color: transparent;
     margin-left: 1rem;
     cursor: pointer;
  }
+ .noResultText{
+    color: #bcaf9e;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-family: fantasy;
+ }
 
 
 @media only screen and (max-width: 960px) {
@@ -96,4 +105,11 @@ border-color: transparent;
         .artistName{
             display: none;
         }
+        .noResultText{
+            color: rgb(96, 96, 74);
+            word-wrap: break-word;
+           text-align: center;
+            height: 50vh;
+            font-family: cursive;
+                 }
 }

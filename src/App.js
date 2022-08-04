@@ -4,11 +4,11 @@ import Central from "./Components/Central/Central";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import SideBar from "./Components/Header/SideBar";
+import Fav from "./Components/Favourite/Fav";
+import Home from "./Components/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppContext } from "./Store/Context";
 import reducer from "./Store/Reducer";
-import Fav from "./Components/Favourite/Fav";
-import Home from "./Components/Home/Home";
 
 const initialState = {
   currentSongId: "",
@@ -22,7 +22,7 @@ const initialState = {
   FavListPlaying: false,
 };
 
-const App = (props) => {
+const App = () => {
   const [Store, StoreDispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -45,20 +45,10 @@ const App = (props) => {
           <Header />
           <SideBar />
           <Routes>
-            <Route exact path="/" element={<Home login_tag={true} />} />
-            <Route
-              path="/favourite"
-              element={
-                Store.isLogin ? (
-                  <Fav {...props} />
-                ) : (
-                  <>
-                    <Home login_tag={false} />
-                  </>
-                )
-              }
-            />
+            <Route path="/favourite" element={<Fav />} />
             <Route exact path="/search" element={<Central />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </Router>
         <Footer />

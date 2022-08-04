@@ -6,18 +6,18 @@ import { ChangeSong, songArray } from "../../Store/Action";
 import { db } from "../../Firebase";
 import { collection, getDocs } from "firebase/firestore";
 
-const Fav = (props) => {
+const Fav = () => {
   const { Store, StoreDispatch } = useContext(AppContext);
-  if (Store.isLogin === false) {
-    // navigate.push("/search");
-    alert("Please Login");
-  }
 
   const [songsList, setsong] = useState([]);
   let data = [];
 
   const fetchingVideos = async () => {
-    let userId = "test";
+    if (Store.isLogin === false) {
+      return;
+    }
+
+    let userId;
     userId = Store.userId;
 
     data = [];
@@ -54,6 +54,16 @@ const Fav = (props) => {
   return (
     <div id="centraldiv">
       <div className="songsListSection">
+        {!Store.isLogin && (
+          <div className="noResultText">
+            <h1>please login to access your favourite list</h1>
+          </div>
+        )}
+        {songsList.length == 0 && (
+          <div className="noResultText">
+            <h1>No items found in favourite list </h1>
+          </div>
+        )}
         {songsList.map((result, index) => {
           return (
             <div className="songsItem" key={index}>
