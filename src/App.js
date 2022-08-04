@@ -9,6 +9,7 @@ import Home from "./Components/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppContext } from "./Store/Context";
 import reducer from "./Store/Reducer";
+import { loginout } from "./Store/Action";
 
 const initialState = {
   currentSongId: "",
@@ -30,6 +31,18 @@ const App = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+  // const IntialLogin = () => {
+  //   let name = localStorage.getItem("name");
+  //   let userId = localStorage.getItem("userId");
+  //   console.log(name, userId);
+  //   StoreDispatch({
+  //     type: loginout,
+  //     payload: { isLogin: true, userName: name, userId: userId },
+  //   });
+  // };
+  // useEffect(() => {
+  //   IntialLogin();
+  // }, []);
 
   const handleBeforeUnload = (e) => {
     e.preventDefault();

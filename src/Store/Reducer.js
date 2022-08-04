@@ -1,6 +1,6 @@
 const reducer = (state, action) => {
-  // console.log(action.type);
-  // console.log(action.payload);
+  console.log(action.type);
+  console.log(action.payload);
   switch (action.type) {
     case "SongChange":
       return {

@@ -10,14 +10,14 @@ import { AppContext } from "../../Store/Context";
 import { loginout } from "../../Store/Action";
 
 const Header = () => {
-  const { StoreDispatch } = useContext(AppContext);
+  const { Store, StoreDispatch } = useContext(AppContext);
   const [isLogin, setisLogin] = useState(false);
   const [userName, setuserName] = useState("");
   const handleloginOut = async () => {
     if (isLogin) {
       signOut(auth)
         .then(() => {
-          setisLogin(false);
+          setisLogin(Store.isLogin);
           StoreDispatch({
             type: loginout,
             payload: { isLogin: false },
@@ -45,11 +45,20 @@ const Header = () => {
           }
 
           setuserName(name);
+
+          // localStorage.setItem(
+          //   "name",
+          //   JSON.stringify(name.replaceAll('"', ""))
+          // );
+          // localStorage.setItem(
+          //   "userId",
+          //   JSON.stringify(userId.replaceAll('"', ""))
+          // );
           StoreDispatch({
             type: loginout,
             payload: { isLogin: true, userName: name, userId: userId },
           });
-          setisLogin(true);
+          setisLogin(Store.isLogin);
         })
         .catch((e) => {
           alert("Something went wrong while login please try again");
@@ -68,12 +77,12 @@ const Header = () => {
         <h1 className="HeaderTitle">Music World</h1>
         <IconContext.Provider value={{ size: "2em" }}>
           <div className="userInfo">
-            {isLogin ? (
+            {Store.isLogin ? (
               <GiExitDoor onClick={handleloginOut} />
             ) : (
               <GiDoorHandle onClick={handleloginOut} />
             )}
-            {isLogin && <h3>{userName}</h3>}
+            {Store.isLogin && <h3>{userName}</h3>}
           </div>
         </IconContext.Provider>
       </div>
